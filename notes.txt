@@ -1,0 +1,19 @@
+game.local_player.print(game.local_player.get_inventory(1)[1].name)   -- Prints contents of inventory slot 1 (1 = internal inventory, 2 = quickbar inventory, slots are numbered left to right top to bottom)
+
+-- This will iterate through the local player's inventory (2 = quickbar inventory)
+-- Since player inherits from entity, perhaps event.entity.get_inventory will work in the same manner
+for name, count in pairs(game.local_player.get_inventory(2).get_contents()) do
+	game.local_player.print(name .. " : "  .. count)
+end
+
+-- name property should be "player" for a player entity
+character.name
+entity.name
+
+Prototype/Character   -- This is the player
+Prototype/Entity    -- Character inherits from this
+
+on_entity_died   -- Event when an entity dies
+event.entity.position    -- Position of the entity which died
+
+entity.insert   -- Inserts the lua/ItemStack into entity inventory
