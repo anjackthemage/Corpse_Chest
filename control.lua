@@ -27,6 +27,7 @@ end
 	-- for n, c in pairs(src.get_contents()) do
 		-- item = { name = n, count = c }
 		-- if dst.can_insert(item) == true then
+			 -- printf(item.name .. " : " .. item.count)
 			-- dst.insert(item)
 		-- else
 			-- printf("Error moving items - dst is full or cannot accept")
