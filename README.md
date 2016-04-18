@@ -13,3 +13,4 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 **Future plans:**
 
 - Add custom graphics.
+- Make corpse disappear when empty. Alternatively, make corpse decay automatically over time.
