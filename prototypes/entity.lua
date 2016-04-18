@@ -10,7 +10,7 @@ data:extend({
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    inventory_size = 64,
+    inventory_size = 160,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
