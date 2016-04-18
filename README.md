@@ -1,5 +1,7 @@
 # Corpse Chest
 
+**Version: 0.1.0
+
 **Short description:**
 
 Factorio mod to retain player inventory in a "corpse" after the player dies.
