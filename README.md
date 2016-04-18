@@ -1,6 +1,6 @@
 # Corpse Chest
 
-**Version: 0.1.3
+**Version: 0.1.3**
 
 **Short description:**
 
