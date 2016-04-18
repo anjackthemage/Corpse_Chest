@@ -10,5 +10,4 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 
 **Future plans:**
 
-- Add support for all character inventories (gun slots, tool slots, ammo slots).
 - Add proper support for armor (and similar items) so armor contents are also transferred.
