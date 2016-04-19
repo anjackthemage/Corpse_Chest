@@ -1,4 +1,5 @@
 require "defines"
+-- This is for debug. Should probably remove this in the release version.
 function printf (message)
 	local pList = game.players;
 	for i, p in ipairs(pList) do
@@ -9,6 +10,7 @@ end
 function copyPlayerItems(player, dest)
 	local currStackIndex = 1
 	local currStackContent
+	local cursorStackContent = nil
 	for inv = 1, 6 do
 		for index = 1, #player.get_inventory(inv) do
 			if player.get_inventory(inv)[index].valid_for_read then
@@ -19,6 +21,10 @@ function copyPlayerItems(player, dest)
 				end
 			end
 		end
+	end
+	cursorStackContent = player.cursor_stack
+	if dest.get_inventory(1)[currStackIndex].can_set_stack(cursorStackContent) then
+		dest.get_inventory(1)[currStackIndex].set_stack(cursorStackContent)
 	end
 end
 
