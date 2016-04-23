@@ -41,6 +41,8 @@ end
 	-- end
 -- end
 
+corpseArray = {}
+
 script.on_event(defines.events.on_entity_died, function(event)
 	if event.entity.name == "player" then
 		local player = event.entity
@@ -70,5 +72,31 @@ script.on_event(defines.events.on_entity_died, function(event)
 		-- movePlayerItems(player.get_inventory(defines.inventory.player_quickbar), cChest)
 		-- movePlayerItems(player.get_inventory(defines.inventory.player_main), cChest)
 		copyPlayerItems(player, cChest)
+		
+		-- Start time, so we know when to destroy the chest.
+		startTick = game.tick
+		printf("Corpse created at " .. startTick)
+		
+		table.insert(corpseArray, { born=startTick, corpse=cChest })
+		
+		
 	end
 end)
+
+-- Hook into the on_tick to check if chest should decay.
+script.on_event(defines.events.on_tick, function(event)
+	local corpseArray = remote.call("CorpseChest", "get_corpses")
+	for index, object in pairs(corpseArray) do
+		if game.tick - object["born"] > 3600 then
+			object["corpse"].destroy()
+			printf("Corpse destroyed at " .. game.tick)
+			table.remove(corpseArray, index)
+		end
+	end
+end)
+
+interface = {
+	get_corpses = function() return corpseArray end
+}
+
+remote.add_interface("CorpseChest", interface)

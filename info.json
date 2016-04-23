@@ -1,6 +1,6 @@
 {
 	"name": "corpse-chest",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"title": "Corpse Chest Mod",
 	"author": "Slush.Filter, Anjack",
 	"description": "Drops a chest on player death. Chest should contain all of player's inventory items.",
