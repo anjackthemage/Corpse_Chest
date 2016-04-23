@@ -14,3 +14,4 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 
 - Add custom graphics.
 - Add support for items in the craft queue.
+- Allow user to set "corpse decay time".
