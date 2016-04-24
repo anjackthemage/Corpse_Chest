@@ -41,7 +41,8 @@ end
 	-- end
 -- end
 
-corpseArray = {}
+-- To track all the corpse chests in the world.
+local corpseArray = {}
 
 script.on_event(defines.events.on_entity_died, function(event)
 	if event.entity.name == "player" then
@@ -74,10 +75,10 @@ script.on_event(defines.events.on_entity_died, function(event)
 		copyPlayerItems(player, cChest)
 		
 		-- Start time, so we know when to destroy the chest.
-		startTick = game.tick
-		printf("Corpse created at " .. startTick)
+		local expireTick = game.tick + 3600
+		printf("Corpse created at " .. expireTick)
 		
-		table.insert(corpseArray, { born=startTick, corpse=cChest })
+		table.insert(corpseArray, { dies=startTick, corpse=cChest })
 		
 		
 	end
@@ -87,7 +88,6 @@ end)
 script.on_event(defines.events.on_tick, function(event)
 	local corpseArray = remote.call("CorpseChest", "get_corpses")
 	for index, object in pairs(corpseArray) do
-		if game.tick - object["born"] > 3600 then
 			object["corpse"].destroy()
 			printf("Corpse destroyed at " .. game.tick)
 			table.remove(corpseArray, index)
