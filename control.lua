@@ -11,20 +11,23 @@ function copyPlayerItems(player, dest)
 	local currStackIndex = 1
 	local currStackContent
 	local cursorStackContent = nil
+	local sInv -- source inventory
+	local dInv = dest.get_inventory(1) -- destination inventory
 	for inv = 1, 6 do
-		for index = 1, #player.get_inventory(inv) do
-			if player.get_inventory(inv)[index].valid_for_read then
-				currStackContent = player.get_inventory(inv)[index]
-				if dest.get_inventory(1)[currStackIndex].can_set_stack(currStackContent) then
-					dest.get_inventory(1)[currStackIndex].set_stack(currStackContent)
+		sInv = player.get_inventory(inv)
+		for index = 1, #sInv do
+			if sInv[index].valid_for_read then
+				currStackContent = sInv[index]
+				if dInv[currStackIndex].can_set_stack(currStackContent) then
+					dInv[currStackIndex].set_stack(currStackContent)
 					currStackIndex = currStackIndex + 1
 				end
 			end
 		end
 	end
 	cursorStackContent = player.cursor_stack
-	if dest.get_inventory(1)[currStackIndex].can_set_stack(cursorStackContent) then
-		dest.get_inventory(1)[currStackIndex].set_stack(cursorStackContent)
+	if dInv[currStackIndex].can_set_stack(cursorStackContent) then
+		dInv[currStackIndex].set_stack(cursorStackContent)
 	end
 end
 

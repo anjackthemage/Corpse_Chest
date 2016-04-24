@@ -7,7 +7,7 @@ data:extend({
     minable = {mining_time = 5, results = {}},
     max_health = 50,
     corpse = "small-remnants",
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     inventory_size = 160,
@@ -16,11 +16,11 @@ data:extend({
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
     picture =
     {
-      filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
+      filename = "__corpse-chest__/graphics/entity/corpse-chest/corpse-chest.png",
       priority = "extra-high",
-      width = 46,
-      height = 33,
-      shift = {0.3, 0}
+      width = 60,
+      height = 58,
+      shift = {0.40625, -0.4375}
     }
   }
   })
