@@ -88,6 +88,7 @@ end)
 script.on_event(defines.events.on_tick, function(event)
 	local corpseArray = remote.call("CorpseChest", "get_corpses")
 	for index, object in pairs(corpseArray) do
+		if game.tick > object["dies"] then
 			object["corpse"].destroy()
 			printf("Corpse destroyed at " .. game.tick)
 			table.remove(corpseArray, index)
