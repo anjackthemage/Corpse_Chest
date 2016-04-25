@@ -1,12 +1,6 @@
 require "defines"
--- This is for debug. Should probably remove this in the release version.
-function printf (message)
-	local pList = game.players;
-	for i, p in ipairs(pList) do
-		p.print(message)
-	end
-end
 
+-- Cycles through each item slot in each inventory (main, quick bar, armor, tool, guns, ammo) and moves any found items to the chest. Also checks player's cursor slot so any items in-hand will also be transferred.
 function copyPlayerItems(player, dest)
 	local currStackIndex = 1
 	local currStackContent
@@ -34,13 +28,14 @@ end
 -- To track all the corpse chests in the world.
 local corpseArray = {}
 
+-- Hook into the "died" event. If it's a player, do our thing.
 script.on_event(defines.events.on_entity_died, function(event)
 	if event.entity.name == "player" then
 		local player = event.entity
 		local targetPos = player.surface.find_non_colliding_position("corpse-chest", player.position, 10, 1)
 		
 		if targetPos == nil then
-			printf("Nowhere to spawn chest.")
+			entity.print("Corpse-Chest mod error: Nowhere to spawn corpse.")
 			return
 		end
 		-- Create the corpse-chest
@@ -51,7 +46,7 @@ script.on_event(defines.events.on_entity_died, function(event)
 		})
 		
 		if cChest == nil then
-			printf("Corpse spawn - Failed.")
+			entity.print("Corpse-Chest mod error: Corpse spawn - Failed.")
 			return
 		end
 		

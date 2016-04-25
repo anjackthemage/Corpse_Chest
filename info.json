@@ -1,8 +1,8 @@
 {
 	"name": "corpse-chest",
-	"version": "0.1.5",
+	"version": "1.0.0",
 	"title": "Corpse Chest Mod",
 	"author": "Slush.Filter, Anjack",
-	"description": "Drops a chest on player death. Chest should contain all of player's inventory items.",
+	"description": "When the character dies, a tombstone and chest will spawn. Chest will contain all of the character's inventory items.",
 	"dependencies": ["base >= 0.12.0"]
 }

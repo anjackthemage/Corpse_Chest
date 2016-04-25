@@ -17,3 +17,8 @@ on_entity_died   -- Event when an entity dies
 event.entity.position    -- Position of the entity which died
 
 entity.insert   -- Inserts the lua/ItemStack into entity inventory
+
+
+
+/c bob.insert(game.local_player.get_inventory(defines.inventory.player_quickbar)[1])
+/c for index = 1, #game.local_player.get_inventory(defines.inventory.player_quickbar) do if game.local_player.get_inventory(defines.inventory.player_quickbar)[index].valid_for_read then game.local_player.print(game.local_player.get_inventory(defines.inventory.player_quickbar)[index].name); end; end
