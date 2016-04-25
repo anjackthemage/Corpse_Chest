@@ -81,7 +81,7 @@ script.on_event(defines.events.on_entity_died, function(event)
 		local expireTick = game.tick + 3600
 		printf("Corpse created at " .. expireTick)
 		
-		table.insert(corpseArray, { dies=startTick, corpse=cChest })
+		table.insert(corpseArray, { dies=expireTick, corpse=cChest })
 		
 		
 	end
