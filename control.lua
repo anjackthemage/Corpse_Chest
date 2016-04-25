@@ -11,20 +11,23 @@ function copyPlayerItems(player, dest)
 	local currStackIndex = 1
 	local currStackContent
 	local cursorStackContent = nil
+	local sInv -- source inventory
+	local dInv = dest.get_inventory(1) -- destination inventory
 	for inv = 1, 6 do
-		for index = 1, #player.get_inventory(inv) do
-			if player.get_inventory(inv)[index].valid_for_read then
-				currStackContent = player.get_inventory(inv)[index]
-				if dest.get_inventory(1)[currStackIndex].can_set_stack(currStackContent) then
-					dest.get_inventory(1)[currStackIndex].set_stack(currStackContent)
+		sInv = player.get_inventory(inv)
+		for index = 1, #sInv do
+			if sInv[index].valid_for_read then
+				currStackContent = sInv[index]
+				if dInv[currStackIndex].can_set_stack(currStackContent) then
+					dInv[currStackIndex].set_stack(currStackContent)
 					currStackIndex = currStackIndex + 1
 				end
 			end
 		end
 	end
 	cursorStackContent = player.cursor_stack
-	if dest.get_inventory(1)[currStackIndex].can_set_stack(cursorStackContent) then
-		dest.get_inventory(1)[currStackIndex].set_stack(cursorStackContent)
+	if dInv[currStackIndex].can_set_stack(cursorStackContent) then
+		dInv[currStackIndex].set_stack(cursorStackContent)
 	end
 end
 
@@ -40,6 +43,9 @@ end
 		-- end
 	-- end
 -- end
+
+-- To track all the corpse chests in the world.
+local corpseArray = {}
 
 script.on_event(defines.events.on_entity_died, function(event)
 	if event.entity.name == "player" then
@@ -70,5 +76,31 @@ script.on_event(defines.events.on_entity_died, function(event)
 		-- movePlayerItems(player.get_inventory(defines.inventory.player_quickbar), cChest)
 		-- movePlayerItems(player.get_inventory(defines.inventory.player_main), cChest)
 		copyPlayerItems(player, cChest)
+		
+		-- Start time, so we know when to destroy the chest.
+		local expireTick = game.tick + 3600
+		printf("Corpse created at " .. expireTick)
+		
+		table.insert(corpseArray, { dies=expireTick, corpse=cChest })
+		
+		
 	end
 end)
+
+-- Hook into the on_tick to check if chest should decay.
+script.on_event(defines.events.on_tick, function(event)
+	local corpseArray = remote.call("CorpseChest", "get_corpses")
+	for index, object in pairs(corpseArray) do
+		if game.tick > object["dies"] then
+			object["corpse"].destroy()
+			printf("Corpse destroyed at " .. game.tick)
+			table.remove(corpseArray, index)
+		end
+	end
+end)
+
+interface = {
+	get_corpses = function() return corpseArray end
+}
+
+remote.add_interface("CorpseChest", interface)

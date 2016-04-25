@@ -1,6 +1,6 @@
 # Corpse Chest
 
-**Version: 0.1.4**
+**Version: 0.1.5**
 
 **Short description:**
 
@@ -13,5 +13,5 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 **ToDo:**
 
 - Add custom graphics.
-- Make corpse disappear when empty. Alternatively, make corpse decay automatically over time.
 - Add support for items in the craft queue.
+- Allow user to set "corpse decay time".
