@@ -31,19 +31,6 @@ function copyPlayerItems(player, dest)
 	end
 end
 
--- function movePlayerItems (src, dst) 
-	-- local item
-	-- for n, c in pairs(src.get_contents()) do
-		-- item = { name = n, count = c }
-		-- if dst.can_insert(item) == true then
-			 -- printf(item.name .. " : " .. item.count)
-			-- dst.insert(item)
-		-- else
-			-- printf("Error moving items - dst is full or cannot accept")
-		-- end
-	-- end
--- end
-
 -- To track all the corpse chests in the world.
 local corpseArray = {}
 
@@ -69,17 +56,10 @@ script.on_event(defines.events.on_entity_died, function(event)
 		end
 		
 		-- Move each of the player's inventories over to the corpse-chest
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_guns), cChest)
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_ammo), cChest)
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_armor), cChest)
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_tools), cChest)
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_quickbar), cChest)
-		-- movePlayerItems(player.get_inventory(defines.inventory.player_main), cChest)
 		copyPlayerItems(player, cChest)
 		
-		-- Start time, so we know when to destroy the chest.
+		-- When will the chest decay?
 		local expireTick = game.tick + 3600
-		printf("Corpse created at " .. expireTick)
 		
 		table.insert(corpseArray, { dies=expireTick, corpse=cChest })
 		
@@ -93,7 +73,6 @@ script.on_event(defines.events.on_tick, function(event)
 	for index, object in pairs(corpseArray) do
 		if game.tick > object["dies"] then
 			object["corpse"].destroy()
-			printf("Corpse destroyed at " .. game.tick)
 			table.remove(corpseArray, index)
 		end
 	end
