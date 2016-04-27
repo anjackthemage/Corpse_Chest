@@ -12,8 +12,8 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 
 **ToDo:**
 
+- Make corpse visible on radar/map screen.
 - Is it possible to customize the tombstone based on the player/character who spanwed it?
 - Add support for items in the craft queue.
 - Allow user to set "corpse decay time".
-- Increase default decay time.
 - Performance improvement: Set on_tick call to only check for corpse decay once every specified interval.
