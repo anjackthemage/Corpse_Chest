@@ -1,3 +1,1 @@
-require("prototypes.item")
-require("prototypes.entity")
-
+require("prototypes.entity") -- So lonely.
