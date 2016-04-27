@@ -54,7 +54,7 @@ script.on_event(defines.events.on_entity_died, function(event)
 		copyPlayerItems(player, cChest)
 		
 		-- When will the chest decay?
-		local expireTick = game.tick + 3600
+		local expireTick = game.tick + 18000
 		
 		table.insert(corpseArray, { dies=expireTick, corpse=cChest })
 		
