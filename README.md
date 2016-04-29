@@ -11,8 +11,8 @@ Factorio mod to retain player inventory in a chest after the player dies.
 Normally, when your character dies in Factorio, all of your inventory is lost. This mod spawns a container (and tombstone) at the location of your character (at the time of death) and fills it with whatever you had in your inventory. All player inventories and all items are supported. Currently items in the player crafting queue are not transferred to the container upon death, they are simply lost.
 
 **Changelog:**
-1.0.0 - Initial release.
-1.0.1 - Added German and Dutch localization. (Thanks to apcnc and fps_holland @ forums.factorio.com.)
+- 1.0.0 - Initial release.
+- 1.0.1 - Added German and Dutch localization. (Thanks to apcnc and fps_holland @ forums.factorio.com.)
 
 **ToDo:**
 
