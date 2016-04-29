@@ -1,6 +1,6 @@
 {
 	"name": "corpse-chest",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"title": "Corpse Chest Mod",
 	"author": "Slush.Filter, Anjack",
 	"description": "When the character dies, a tombstone and chest will spawn. Chest will contain all of the character's inventory items.",
