@@ -1,6 +1,6 @@
 # Corpse Chest
 
-**Version:1.0.1**
+**Version:1.0.2**
 
 **Short description:**
 
@@ -13,6 +13,7 @@ Normally, when your character dies in Factorio, all of your inventory is lost. T
 **Changelog:**
 - 1.0.0 - Initial release.
 - 1.0.1 - Added German and Dutch localization. (Thanks to apcnc and fps_holland @ forums.factorio.com.)
+- 1.0.2 - Added entity validation to corpse decay code. (Thanks to Cyber_Garret @ forums.factorio.com for the find.) Issue #9
 
 **ToDo:**
 
