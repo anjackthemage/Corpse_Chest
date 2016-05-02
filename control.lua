@@ -66,7 +66,7 @@ end)
 script.on_event(defines.events.on_tick, function(event)
 	local corpseArray = remote.call("CorpseChest", "get_corpses")
 	for index, object in pairs(corpseArray) do
-		if game.tick > object["dies"] then
+		if game.tick > object["dies"] and object["corpse"].valid then
 			object["corpse"].destroy()
 			table.remove(corpseArray, index)
 		end
